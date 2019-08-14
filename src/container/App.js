@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   console.log('dispatch Page: ', dispatch);
   return {
     sendMessageAction: (msg) => dispatch(sendMessage(msg)),
-    getMessagesAction: () => dispatch(getMessages()),
+    getMessagesAction: () => dispatch(getMessages),
   };
 };
 
