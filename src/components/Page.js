@@ -1,27 +1,21 @@
 import React from 'react';
-import { uniqueId } from 'lodash';
+import GroupChat from './GroupChat';
+import WriteArea from './WriteArea';
 
 export default function Page(props) {
   const { messages, sendMessage, getMessages } = props;
-  const sendMsg = (e) => {
-    sendMessage(e.currentTarget.innerText);
-  };
   const getMsg = () => {
     getMessages();
   };
 
   return (
-    <div>
+    <div className="page_container">
       <p>
         You have {messages.length} messages!
       </p>
-      <button type="button" onClick={sendMsg}>Test Message</button>
       <button type="button" onClick={getMsg}>Get Messages</button>
-      <ul>
-        {
-          messages.map((msg) => (<li key={uniqueId()}>{msg.message}</li>))
-        }
-      </ul>
+      <GroupChat messages={messages} />
+      <WriteArea sendMessage={sendMessage} />
     </div>
   );
 }

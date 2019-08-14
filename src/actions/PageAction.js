@@ -1,15 +1,26 @@
 const SERVER_URL = 'ws://st-chat.shas.tel';
+const ws = new WebSocket(SERVER_URL);
 
 export default function sendMessage(msg) {
+  const sendMsg = {
+    from: 'MyNAME',
+    message: msg,
+  };
+
+  ws.send(JSON.stringify(sendMsg));
   return {
     type: 'SEND_MESSAGE',
-    payload: { message: msg },
+    // payload: [{
+    //   from: 'MyNAME',
+    //   message: msg,
+    // },
+    // ],
   };
 }
 
 export function getMessages(dispatch) {
   let MESSAGES;
-  const ws = new WebSocket(SERVER_URL);
+
   ws.onopen = () => {
     console.log('ws open');
   };

@@ -30,8 +30,8 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <h1>Chatterbox</h1>
+        <User name={user.name} />
       </header>
-      <User name={user.name} />
       <Page
         messages={page.messages}
         sendMessage={sendMessageAction}
