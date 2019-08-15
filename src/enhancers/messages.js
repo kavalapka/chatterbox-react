@@ -2,9 +2,9 @@ const SERVER_URL = 'ws://st-chat.shas.tel';
 let ws;
 let MESSAGES;
 
-function wsConnect(next, action) {
+function wsConnect(next) {
+  let hasRecievedMessages = false;
   ws = new WebSocket(SERVER_URL);
-  const nextAction = action;
 
   ws.onopen = () => {
     console.log('ws open');
@@ -12,38 +12,43 @@ function wsConnect(next, action) {
 
   ws.onmessage = (e) => {
     MESSAGES = JSON.parse(e.data);
-    console.log('messages: ', MESSAGES);
-    nextAction.payload = MESSAGES;
-    next(nextAction);
+    const payload = MESSAGES.reverse();
+    let type;
+    if (hasRecievedMessages) {
+      type = 'GET_NEW_MESSAGES';
+    } else {
+      type = 'PRELOAD_MESSAGES';
+    }
+    hasRecievedMessages = true;
+    console.log('action type: ', type);
+
+    next({ type, payload });
   };
 
   ws.onclose = () => {
     console.warn('disconnected');
-    wsConnect(next, action);
+    wsConnect(next);
   };
 
-  ws.onerror = (err) => {
-    console.error('Socket encountered error: ', err.message, 'Closing socket');
+  ws.onerror = () => {
     ws.close();
   };
 }
 
 const connectWebSocket = () => (next) => (action) => {
-  console.log(`Тип события: ${action.type}`);
+  console.log(`ACTION TYPE: ${action.type}`);
 
   switch (action.type) {
-    case 'GET_NEW_MESSAGES':
+    case 'PRELOAD_MESSAGES':
       if (!ws) {
-        console.log('ws not open');
-        wsConnect(next, action);
+        wsConnect(next);
       }
       break;
 
     case 'SEND_MESSAGE':
       ws.send(JSON.stringify(action.payload));
-
-
       break;
+
     default:
   }
 };

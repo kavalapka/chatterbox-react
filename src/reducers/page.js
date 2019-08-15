@@ -12,6 +12,12 @@ export default function pageReducer(state = initialState, action) {
         messages: [...state.messages, ...action.payload],
       };
     }
+    case 'PRELOAD_MESSAGES': {
+      return {
+        ...state,
+        messages: action.payload,
+      };
+    }
 
     default:
       return state;

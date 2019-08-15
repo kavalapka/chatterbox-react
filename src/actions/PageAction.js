@@ -2,7 +2,7 @@ export default function sendMessage(msg) {
   const sendMsg = {
     from: 'MyNAME',
     message: msg,
-    str: msg,
+    // str: msg,
   };
   return {
     type: 'SEND_MESSAGE',
@@ -10,9 +10,9 @@ export default function sendMessage(msg) {
   };
 }
 
-export function getMessages() {
-  console.log('action GET_NEW_MESSAGES');
+export function preloadMessages() {
+  console.log('action PRELOAD_MESSAGES');
   return {
-    type: 'GET_NEW_MESSAGES',
+    type: 'PRELOAD_MESSAGES',
   };
 }

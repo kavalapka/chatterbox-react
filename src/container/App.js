@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import User from '../components/User';
 import Page from '../components/Page';
-import sendMessage, { getMessages } from '../actions/PageAction';
+import sendMessage, { preloadMessages } from '../actions/PageAction';
 import './App.css';
 
 
@@ -16,18 +16,18 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => ({
   sendMessageAction: (msg) => dispatch(sendMessage(msg)),
-  getMessagesAction: () => dispatch(getMessages()),
+  preloadMessagesAction: () => dispatch(preloadMessages()),
 });
 
 function App(props) {
   const {
-    user, page, sendMessageAction, getMessagesAction,
+    user, page, sendMessageAction, preloadMessagesAction, getMessagesAction,
   } = props;
 
   useEffect(() => {
     if (page.messages.length === 0) {
       console.warn('start!!!!!');
-      getMessagesAction();
+      preloadMessagesAction();
     }
   });
 
@@ -40,7 +40,6 @@ function App(props) {
       <Page
         messages={page.messages}
         sendMessage={sendMessageAction}
-        getMessages={getMessagesAction}
       />
     </div>
   );
