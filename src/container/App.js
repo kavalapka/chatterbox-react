@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 function App(props) {
   const {
-    user, page, sendMessageAction, preloadMessagesAction, getMessagesAction,
+    user, page, sendMessageAction, preloadMessagesAction,
   } = props;
 
   useEffect(() => {
@@ -34,8 +34,10 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Chatterbox</h1>
-        <User name={user.name} />
+        <div className="header-wrapper">
+          <h1>Chatterbox</h1>
+          <User name={user.name} />
+        </div>
       </header>
       <Page
         messages={page.messages}

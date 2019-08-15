@@ -5,6 +5,7 @@ body, html {
 .App {
   text-align: center;
   height: 100vh;
+  background-color: rgba(86, 131, 145, 0.14);
 }
 
 .App-logo {
@@ -17,10 +18,14 @@ body, html {
   background-color: #282c34;
   height: 100px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+.header-wrapper {
+
 }
 
 .App-link {
@@ -29,4 +34,9 @@ body, html {
 
 .page_container {
   height: 80vh;
+}
+
+button.btn-primary {
+  background-color: inherit;
+  border-color: #7fb8c7;
 }
