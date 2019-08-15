@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import User from '../components/User';
 import Page from '../components/Page';
@@ -14,18 +14,23 @@ const mapStateToProps = (store) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  console.log('dispatch Page: ', dispatch);
-  return {
-    sendMessageAction: (msg) => dispatch(sendMessage(msg)),
-    getMessagesAction: () => dispatch(getMessages),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  sendMessageAction: (msg) => dispatch(sendMessage(msg)),
+  getMessagesAction: () => dispatch(getMessages()),
+});
 
 function App(props) {
   const {
     user, page, sendMessageAction, getMessagesAction,
   } = props;
+
+  useEffect(() => {
+    if (page.messages.length === 0) {
+      console.warn('start!!!!!');
+      getMessagesAction();
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">

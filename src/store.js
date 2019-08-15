@@ -2,10 +2,9 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
+import connectWebSocket from './enhancers/messages';
 
-// import { createStore, applyMiddleware } from 'redux';
-// import getMessages from './enhancers/messages';
-// const store = createStore(rootReducer, applyMiddleware(getMessages));
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
+const store = createStore(rootReducer, applyMiddleware(thunk, connectWebSocket, logger));
 
 export default store;
