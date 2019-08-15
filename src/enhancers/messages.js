@@ -1,4 +1,5 @@
-const SERVER_URL = 'ws://st-chat.shas.tel';
+// const SERVER_URL = 'ws://st-chat.shas.tel';
+const SERVER_URL = 'wss://wssproxy.herokuapp.com';
 let ws;
 let MESSAGES;
 
