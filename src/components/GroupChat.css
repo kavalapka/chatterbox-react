@@ -42,6 +42,7 @@
 
 .message__body__text {
   text-align: left;
+  word-break: break-word;
 }
 
 .message__time {

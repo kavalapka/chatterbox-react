@@ -2,6 +2,7 @@ export default function sendMessage(msg) {
   const sendMsg = {
     from: 'MyNAME',
     message: msg,
+    str: msg,
   };
   return {
     type: 'SEND_MESSAGE',
