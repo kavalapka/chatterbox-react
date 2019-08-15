@@ -6,6 +6,8 @@
   padding: 2% 10%;
   box-sizing: border-box;
   font: 13px/18px Tahoma,sans-serif,Arial,Helvetica;
+  height: 70vh;
+  overflow-y: scroll;
 }
 
 .message {
