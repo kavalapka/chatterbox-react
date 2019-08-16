@@ -1,17 +1,11 @@
-export default function sendMessage(msg) {
-  const sendMsg = {
-    from: 'MyNAME',
-    message: msg,
-    // str: msg,
-  };
+export default function sendMessage(messageObj) {
   return {
     type: 'SEND_MESSAGE',
-    payload: sendMsg,
+    payload: messageObj,
   };
 }
 
 export function preloadMessages() {
-  console.log('action PRELOAD_MESSAGES');
   return {
     type: 'PRELOAD_MESSAGES',
   };

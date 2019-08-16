@@ -21,13 +21,13 @@ function wsConnect(next) {
       type = 'PRELOAD_MESSAGES';
     }
     hasRecievedMessages = true;
-    console.log('action type: ', type);
+    // console.log('action type: ', type);
 
     next({ type, payload });
   };
 
   ws.onclose = () => {
-    console.warn('disconnected');
+    // console.warn('disconnected');
     wsConnect(next);
   };
 
@@ -37,8 +37,6 @@ function wsConnect(next) {
 }
 
 const connectWebSocket = () => (next) => (action) => {
-  console.log(`ACTION TYPE: ${action.type}`);
-
   switch (action.type) {
     case 'PRELOAD_MESSAGES':
       if (!ws) {
@@ -50,7 +48,7 @@ const connectWebSocket = () => (next) => (action) => {
       ws.send(JSON.stringify(action.payload));
       break;
 
-    default:
+    default: next(action);
   }
 };
 

@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
 
 export default function WriteArea(props) {
-  const { sendMessage } = props;
+  const { sendMessage, userName } = props;
   const myMsg = useRef(null);
   const send = () => {
-    console.log('send Message: ', myMsg.current.value);
-    sendMessage(myMsg.current.value);
+    sendMessage({ from: userName, message: myMsg.current.value });
   };
 
   return (

@@ -1,32 +1,29 @@
 export const initialState = {
-  name: 'Unknown User',
+  name: localStorage.getItem('CHATTERBOX_USERNAME') || 'Unknown User',
+  login: false,
+  showLoginForm: false,
 };
-export function loginReducer(state = initialState) {
-  return state;
-}
+export function loginReducer(state = initialState, action) {
+  console.log('USER REDUCER');
+  switch (action.type) {
+    case 'SHOW_LOGIN_FORM': {
+      console.log('reducer show form', action.payload);
+      return {
+        ...state,
+        showLoginForm: true,
+      };
+    }
+    case 'LOGIN_USER': {
+      console.log('reducer LOGIN_USER', action.payload);
+      return {
+        ...state,
+        name: action.payload,
+        login: true,
+        showLoginForm: false,
+      };
+    }
 
-// const user = (state = initialState, action) => {
-//   console.log('reducer login');
-//   switch (action.type) {
-//     case 'LOGIN_USER':
-//       return [
-//         ...state,
-//         {
-//           userName: action.userName,
-//           login: false,
-//         },
-//       ];
-//     case 'LOGIN_USER_SUCCESS':
-//       return [
-//         ...state,
-//         {
-//           userName: action.userName,
-//           login: true,
-//         },
-//       ];
-//     default:
-//       return state;
-//   }
-// };
-//
-// export default user;
+    default:
+      return state;
+  }
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import User from '../components/User';
 import Page from '../components/Page';
 import sendMessage, { preloadMessages } from '../actions/PageAction';
+import loginUser, { showLoginForm } from '../actions/UserAction';
 import './App.css';
 
 
@@ -17,15 +18,23 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => ({
   sendMessageAction: (msg) => dispatch(sendMessage(msg)),
   preloadMessagesAction: () => dispatch(preloadMessages()),
+  showLoginFormAction: () => dispatch(showLoginForm()),
+  loginUserAction: (name) => dispatch(loginUser(name)),
 });
 
 function App(props) {
   const {
-    user, page, sendMessageAction, preloadMessagesAction,
+    user, page, sendMessageAction, preloadMessagesAction, showLoginFormAction, loginUserAction
   } = props;
 
   useEffect(() => {
-    if (page.messages.length === 0) {
+    // localStorage.setItem('ключ', 'значение')
+    if (!localStorage.getItem('CHATTERBOX_USERNAME') && !user.showLoginForm) {
+      console.log('ENTER USER NAME');
+      showLoginFormAction();
+    }
+
+    if (localStorage.getItem('CHATTERBOX_USERNAME') && !page.messages.length) {
       console.warn('start!!!!!');
       preloadMessagesAction();
     }
@@ -42,6 +51,9 @@ function App(props) {
       <Page
         messages={page.messages}
         sendMessage={sendMessageAction}
+        showLogin={user.showLoginForm}
+        setUserName={loginUserAction}
+        userName={user.name}
       />
     </div>
   );
