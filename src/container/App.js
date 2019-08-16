@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import User from '../components/User';
 import Page from '../components/Page';
 import sendMessage, { preloadMessages } from '../actions/PageAction';
-import loginUser, { showLoginForm } from '../actions/UserAction';
+import loginUser, { showLoginForm, allowNotify } from '../actions/UserAction';
 import './App.css';
 
 
@@ -20,15 +20,16 @@ const mapDispatchToProps = (dispatch) => ({
   preloadMessagesAction: () => dispatch(preloadMessages()),
   showLoginFormAction: () => dispatch(showLoginForm()),
   loginUserAction: (name) => dispatch(loginUser(name)),
+  allowNotifyAction: () => dispatch(allowNotify()),
 });
 
 function App(props) {
   const {
-    user, page, sendMessageAction, preloadMessagesAction, showLoginFormAction, loginUserAction
+    user, page, sendMessageAction, preloadMessagesAction, showLoginFormAction, loginUserAction,
+    allowNotifyAction,
   } = props;
 
   useEffect(() => {
-    // localStorage.setItem('ключ', 'значение')
     if (!localStorage.getItem('CHATTERBOX_USERNAME') && !user.showLoginForm) {
       console.log('ENTER USER NAME');
       showLoginFormAction();
@@ -37,6 +38,14 @@ function App(props) {
     if (localStorage.getItem('CHATTERBOX_USERNAME') && !page.messages.length) {
       console.warn('start!!!!!');
       preloadMessagesAction();
+    }
+
+    if (user.allowNotify === 'default') {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          allowNotifyAction();
+        }
+      });
     }
   });
 
@@ -54,6 +63,7 @@ function App(props) {
         showLogin={user.showLoginForm}
         setUserName={loginUserAction}
         userName={user.name}
+        notify={user.allowNotify}
       />
     </div>
   );

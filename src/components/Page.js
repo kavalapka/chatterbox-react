@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 
 export default function Page(props) {
   const {
-    messages, sendMessage, showLogin, setUserName, userName,
+    messages, sendMessage, showLogin, setUserName, userName, notify,
   } = props;
 
   let showFromChat;
@@ -14,7 +14,12 @@ export default function Page(props) {
   } else {
     showFromChat = (
       <>
-        <GroupChat setUserName={setUserName} showLogin={showLogin} messages={messages} />
+        <GroupChat
+          setUserName={setUserName}
+          showLogin={showLogin}
+          messages={messages}
+          notify={notify}
+        />
         <WriteArea sendMessage={sendMessage} userName={userName} />
       </>
     );

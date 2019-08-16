@@ -2,6 +2,7 @@ export const initialState = {
   name: localStorage.getItem('CHATTERBOX_USERNAME') || 'Unknown User',
   login: false,
   showLoginForm: false,
+  allowNotify: 'default',
 };
 export function loginReducer(state = initialState, action) {
   console.log('USER REDUCER');
@@ -20,6 +21,13 @@ export function loginReducer(state = initialState, action) {
         name: action.payload,
         login: true,
         showLoginForm: false,
+      };
+    }
+
+    case 'ALLOW_NOTIFY': {
+      return {
+        ...state,
+        allowNotify: action.payload,
       };
     }
 

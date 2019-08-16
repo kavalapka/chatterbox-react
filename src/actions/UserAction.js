@@ -12,3 +12,11 @@ export function showLoginForm() {
     payload: true,
   };
 }
+
+export function allowNotify() {
+  console.log('action: allowNotify');
+  return {
+    type: 'ALLOW_NOTIFY',
+    payload: 'granted',
+  };
+}
