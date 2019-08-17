@@ -32,7 +32,6 @@ export default function pageReducer(state = initialState, action) {
       return {
         ...state,
         connected: true,
-        offlineMessages: [],
       };
     }
 
@@ -41,6 +40,14 @@ export default function pageReducer(state = initialState, action) {
       return {
         ...state,
         connected: false,
+        offlineMessages: [],
+      };
+    }
+
+    case 'CLEAN_OFFLINE_MSG': {
+      return {
+        ...state,
+        offlineMessages: [],
       };
     }
 

@@ -13,7 +13,7 @@
 }
 
 .message {
-  max-width: 560px;
+  /*max-width: 560px;*/
   padding: 5px 15px;
 }
 .message__wrap {

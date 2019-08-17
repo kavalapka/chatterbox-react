@@ -10,15 +10,3 @@ export function preloadMessages() {
     type: 'PRELOAD_MESSAGES',
   };
 }
-
-export function connctWS() {
-  return {
-    type: 'CONNECT_WS',
-  };
-}
-
-export function disConnctWS() {
-  return {
-    type: 'DISCONNECT_WS',
-  };
-}
