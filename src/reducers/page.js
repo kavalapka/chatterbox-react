@@ -1,6 +1,8 @@
 const initialState = {
   count: 0,
   messages: [],
+  offlineMessages: [],
+  connected: false,
 };
 
 export default function pageReducer(state = initialState, action) {
@@ -16,6 +18,29 @@ export default function pageReducer(state = initialState, action) {
       return {
         ...state,
         messages: action.payload,
+      };
+    }
+    case 'SAVE_OFFLINE_MSG': {
+      return {
+        ...state,
+        offlineMessages: [...state.offlineMessages, ...action.payload],
+      };
+    }
+
+    case 'CONNECT_WS': {
+      console.log('Reducer connected');
+      return {
+        ...state,
+        connected: true,
+        offlineMessages: [],
+      };
+    }
+
+    case 'DISCONNECT_WS': {
+      console.log('Reducer disconnected');
+      return {
+        ...state,
+        connected: false,
       };
     }
 
