@@ -54,7 +54,7 @@ function App(props) {
       <header className="App-header">
         <div className="header-wrapper">
           <h1>Chatterbox</h1>
-          <User name={user.name} />
+          <User changeName={showLoginFormAction} name={user.name} />
         </div>
       </header>
       <Page
