@@ -37,6 +37,15 @@
   left: 5px;
 }
 
+.message__display-name {
+  position: absolute;
+  color: #b74f7a;
+  font-weight: bold;
+  font-size: 1.2rem;
+  top: 12px;
+  transform: translateX(-50%);
+}
+
 .message__body {
   display: flex;
   flex-direction: column;

@@ -4,10 +4,22 @@ import { Spinner } from 'react-bootstrap';
 export default function Message(props) {
   const { message, idx } = props;
   const time = new Date(message.time).toLocaleTimeString();
-  let imgUser = (<div className="message__user_img">{idx}</div>);
+  const displayName = message.from.split(' ').map((item) => item.slice(0, 1)).join('');
+  let imgUser = (
+    <div className="message__user_img">
+      <span className="message__display-name">
+        {displayName}
+      </span>
+    </div>
+  );
   if (message.temp) {
     imgUser = (
-      <div className="message__user_img">{idx}<Spinner className="message__spinner" animation="border" variant="warning" /></div>
+      <div className="message__user_img">
+        <span className="message__display-name">
+          {displayName}
+        </span>
+        <Spinner className="message__spinner" animation="border" variant="warning" />
+      </div>
     );
   }
 
