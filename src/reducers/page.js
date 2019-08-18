@@ -8,7 +8,6 @@ const initialState = {
 export default function pageReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_NEW_MESSAGES': {
-      console.log('reducer page', action.payload);
       return {
         ...state,
         messages: [...state.messages, ...action.payload],
@@ -23,7 +22,8 @@ export default function pageReducer(state = initialState, action) {
     case 'SAVE_OFFLINE_MSG': {
       return {
         ...state,
-        offlineMessages: [...state.offlineMessages, ...action.payload],
+        offlineMessages: [...state.offlineMessages, ...action.payload.messages],
+        messages: [...state.messages, ...action.payload.tempMsg],
       };
     }
 
@@ -40,13 +40,6 @@ export default function pageReducer(state = initialState, action) {
       return {
         ...state,
         connected: false,
-        offlineMessages: [],
-      };
-    }
-
-    case 'CLEAN_OFFLINE_MSG': {
-      return {
-        ...state,
         offlineMessages: [],
       };
     }

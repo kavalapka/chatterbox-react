@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { uniqueId } from 'lodash';
 import Message from './Message';
 import './GroupChat.css';
 
@@ -27,7 +28,7 @@ export default function GroupChat(props) {
   });
   return (
     <div className="group_chat" ref={scrollRef}>
-      { messages.map((msg, idx) => <Message key={msg.id} idx={idx} message={msg} />) }
+      { messages.map((msg, idx) => <Message key={msg.id || uniqueId()} idx={idx} message={msg} />) }
     </div>
   );
 }

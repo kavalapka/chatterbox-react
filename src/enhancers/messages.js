@@ -59,7 +59,12 @@ const connectWebSocket = (store) => (next) => (action) => {
       if (ws.readyState !== 1) {
         // if ws not open
         const type = 'SAVE_OFFLINE_MSG';
-        next({ type, payload: [action.payload] });
+        const tempMsg = { ...action.payload };
+        tempMsg.temp = true;
+        next({
+          type,
+          payload: { messages: [action.payload], tempMsg: [tempMsg] },
+        });
       } else {
         // ws open
         ws.send(JSON.stringify(action.payload));
