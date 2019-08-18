@@ -51,20 +51,22 @@ function App(props) {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="header-wrapper">
-          <h1>Chatterbox</h1>
-          <User changeName={showLoginFormAction} name={user.name} />
-        </div>
-      </header>
-      <Page
-        messages={page.messages}
-        sendMessage={sendMessageAction}
-        showLogin={user.showLoginForm}
-        setUserName={loginUserAction}
-        userName={user.name}
-        notify={user.allowNotify}
-      />
+      <div className="App-container">
+        <header className="App-header">
+          <div className="header-wrapper">
+            <h1>Chatterbox</h1>
+            <User changeName={showLoginFormAction} name={user.name} />
+          </div>
+        </header>
+        <Page
+          messages={page.messages}
+          sendMessage={sendMessageAction}
+          showLogin={user.showLoginForm}
+          setUserName={loginUserAction}
+          userName={user.name}
+          notify={user.allowNotify}
+        />
+      </div>
     </div>
   );
 }

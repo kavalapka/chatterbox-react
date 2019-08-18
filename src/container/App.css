@@ -5,7 +5,13 @@ body, html {
 .App {
   text-align: center;
   height: 100vh;
-  background-color: rgba(86, 131, 145, 0.14);
+  background-color: #a9b6c83b;
+}
+
+.App-container {
+  max-width: 1010px;
+  min-width: 300px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -15,7 +21,7 @@ body, html {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(100, 136, 174);
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -25,11 +31,10 @@ body, html {
 }
 
 .header-wrapper {
-
-}
-
-.App-link {
-  color: #61dafb;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0 16px;
 }
 
 .page_container {

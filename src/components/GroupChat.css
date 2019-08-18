@@ -1,9 +1,6 @@
 .group_chat {
-  max-width: 1010px;
-  min-width: 300px;
-  margin: 0 auto;
   border: 1px solid rgba(127, 184, 199, 0.33);
-  border-radius: 5px;
+  border-bottom: none;
   padding: 2% 10%;
   box-sizing: border-box;
   font: 13px/18px Tahoma,sans-serif,Arial,Helvetica;
@@ -21,7 +18,7 @@
 }
 
 .message__user_img {
-  background-color: rgba(95, 158, 160, 0.71);
+  background-color: rgba(75, 104, 129, 0.31);
   border-radius: 50%;
   height: 42px;
   width: 42px;
@@ -39,7 +36,7 @@
 
 .message__display-name {
   position: absolute;
-  color: #b74f7a;
+  color: #16adbf;
   font-weight: bold;
   font-size: 1.2rem;
   top: 12px;
@@ -56,8 +53,10 @@
 }
 
 .message__body__name {
-  color: #b74f7a;
+  color: #b97822;
   font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 6px;
 }
 
 .message__body__text {
@@ -72,7 +71,9 @@
 }
 
 .write_area {
-
+  width: 100%;
+  background-color: white;
+  height: 70px;
 }
 
 .write_area__wrap {
@@ -85,20 +86,22 @@
 .write_area__text {
   font-size: 12px;
   margin-bottom: 10px;
-  padding: 6px 55px 6px 6px;
+  padding: 6px 35px 6px 6px;
   min-height: 50px;
   height: 50px;
   resize: none;
   width: 100%;
   border: none;
-  border-bottom: 2px solid rgba(95, 158, 160, 0.75);
+  border-bottom: 2px solid rgb(100, 136, 174);
   outline: none;
 }
 
 .write_area__send {
   position: absolute;
-  top: 9px;
-  transform: translateX(-100%);
+  top: 12px;
+  transform: translateX(-130%);
+  font-size: 1.5em;
+  color: rgb(108, 180, 234);
 }
 
 .login-form {
