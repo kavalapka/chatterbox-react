@@ -7,13 +7,10 @@ import loginUser, { showLoginForm, allowNotify } from '../actions/UserAction';
 import './App.css';
 
 
-const mapStateToProps = (store) => {
-  console.log('store: ', store);
-  return {
-    user: store.user,
-    page: store.page,
-  };
-};
+const mapStateToProps = (store) => ({
+  user: store.user,
+  page: store.page,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   sendMessageAction: (msg) => dispatch(sendMessage(msg)),
@@ -31,12 +28,10 @@ function App(props) {
 
   useEffect(() => {
     if (!localStorage.getItem('CHATTERBOX_USERNAME') && !user.showLoginForm) {
-      console.log('ENTER USER NAME');
       showLoginFormAction();
     }
 
     if (localStorage.getItem('CHATTERBOX_USERNAME') && !page.messages.length) {
-      console.warn('start!!!!!');
       preloadMessagesAction();
     }
 

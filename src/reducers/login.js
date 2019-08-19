@@ -5,17 +5,14 @@ export const initialState = {
   allowNotify: 'default',
 };
 export function loginReducer(state = initialState, action) {
-  console.log('USER REDUCER');
   switch (action.type) {
     case 'SHOW_LOGIN_FORM': {
-      console.log('reducer show form', action.payload);
       return {
         ...state,
         showLoginForm: true,
       };
     }
     case 'LOGIN_USER': {
-      console.log('reducer LOGIN_USER', action.payload);
       return {
         ...state,
         name: action.payload,

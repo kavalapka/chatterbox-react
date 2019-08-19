@@ -28,7 +28,7 @@ export default function GroupChat(props) {
   });
   return (
     <div className="group_chat" ref={scrollRef}>
-      { messages.map((msg, idx) => <Message key={msg.id || uniqueId()} idx={idx} message={msg} />) }
+      { messages.map((msg) => <Message key={msg.id || uniqueId()} message={msg} />) }
     </div>
   );
 }

@@ -6,7 +6,6 @@ export default function loginUser(name) {
 }
 
 export function showLoginForm() {
-  console.log('action: show form');
   return {
     type: 'SHOW_LOGIN_FORM',
     payload: true,
@@ -14,7 +13,6 @@ export function showLoginForm() {
 }
 
 export function allowNotify() {
-  console.log('action: allowNotify');
   return {
     type: 'ALLOW_NOTIFY',
     payload: 'granted',

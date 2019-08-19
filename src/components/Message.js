@@ -2,7 +2,7 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
 export default function Message(props) {
-  const { message, idx } = props;
+  const { message } = props;
   const time = new Date(message.time).toLocaleTimeString();
   const displayName = message.from.split(' ').map((item) => item.slice(0, 1)).join('');
   let imgUser = (

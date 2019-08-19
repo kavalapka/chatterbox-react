@@ -20,9 +20,8 @@ export default function WriteArea(props) {
   return (
     <div className="write_area">
       <div className="write_area__wrap">
-        <textarea ref={myMsg} onKeyPress={handleKeyPress} className="write_area__text" />
+        <textarea ref={myMsg} onKeyPress={handleKeyPress} className="write_area__text" placeholder="Write a message..." />
         <FontAwesomeIcon icon={faPaperPlane} className="write_area__send" onClick={send} />
-
       </div>
     </div>
   );

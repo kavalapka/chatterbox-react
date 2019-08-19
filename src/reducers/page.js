@@ -28,7 +28,6 @@ export default function pageReducer(state = initialState, action) {
     }
 
     case 'CONNECT_WS': {
-      console.log('Reducer connected');
       return {
         ...state,
         connected: true,
@@ -36,7 +35,6 @@ export default function pageReducer(state = initialState, action) {
     }
 
     case 'DISCONNECT_WS': {
-      console.log('Reducer disconnected');
       return {
         ...state,
         connected: false,
