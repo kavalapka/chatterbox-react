@@ -22,7 +22,7 @@ body, html {
 
 .App-header {
   background-color: rgb(100, 136, 174);
-  height: 100px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
